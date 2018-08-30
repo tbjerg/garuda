@@ -1,48 +1,29 @@
 import * as React from "react"
-// import { style } from "typestyle"
+import { Link } from "react-router-dom"
+import { classes, style } from "typestyle"
 
-// const backGroundStyle = style({
-//     backgroundColor: ""
-// })
+const hoverStyle = style({
+    
+    $nest: {
+        "& li :hover": {
+            backgroundColor: "rgb(180, 180, 180)"
+        },
+    }
+})
 export default class Sidebar extends React.Component<any, any> {
     public render() {
         return (
             <div className="columns">
-                <aside className="menu">
-                    <p className="menu-label">
-                        General
-                </p>
-                    <ul className="menu-list">
-                        <li><a>Dashboard</a></li>
-                        <li><a>Customers</a></li>
-                    </ul>
-                    <p className="menu-label">
-                        Administration
-                </p>
-                    <ul className="menu-list">
-                        <li><a>Team Settings</a></li>
-                        <li>
-                            <a className="is-active">Manage Your Team</a>
-                            <ul>
-                                <li><a>Members</a></li>
-                                <li><a>Plugins</a></li>
-                                <li><a>Add a member</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Invitations</a></li>
-                        <li><a>Cloud Storage Environment Settings</a></li>
-                        <li><a>Authentication</a></li>
-                    </ul>
-                    <p className="menu-label">
-                        Transactions
-                     </p>
-                    <ul className="menu-list">
-                        <li><a>Payments</a></li>
-                        <li><a>Transfers</a></li>
-                        <li><a>Balance</a></li>
-                    </ul>
-                </aside>
-            </div>
+                <div className="column is-one-fifth">
+                    <aside className="menu">
+                        <ul className={classes(hoverStyle, "menu-list")}>
+                            <li><Link to="/sidebar"> Sidebar </Link></li>
+                            <li><Link to="/counter"> Counter</Link></li>
+                            <li><Link to="/reader"> Reader </Link></li>
+                        </ul>
+                    </aside>
+                </div >
+            </div >
         )
     }
 }
