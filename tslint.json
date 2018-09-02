@@ -1,0 +1,86 @@
+{
+	"lintOptions": {
+		"typeCheck": true
+	},
+	"extends": "tslint:recommended",
+	"rules": {
+		"newline-before-return": false,
+		"no-parameter-properties": false,
+		"no-parameter-reassignment": false,
+		"no-unused-variable": false
+	},
+	"semicolon": [
+		true,
+		"never"
+	],
+	"comment-format": [
+		false,
+		"check-space"
+	],
+	"member-access": true,
+	"only-arrow-functions": [
+		true,
+		"allow-declarations",
+		"allow-named-functions"
+	],
+	"curly": false,
+	"max-classes-per-file": [
+		false
+	],
+	"no-namespace": [
+		true,
+		"allow-declarations"
+	],
+	"no-unnecessary-qualifier": true,
+	"object-literal-sort-keys": false,
+	"no-magic-numbers": true,
+	"no-non-null-keyword": false,
+	"no-require-imports": true,
+	"ordered-imports": [
+		false
+	],
+	"no-any": false,
+	"no-unbound-method": false,
+	"no-use-before-declare": false,
+	"no-void-expression": false,
+	"prefer-function-over-method": false,
+	"strict-type-predicates": false,
+	"triple-equals": false,
+	"ban": [
+		true, [
+			"describe",
+			"only"
+		],
+		[
+			"it",
+			"only"
+		]
+	],
+	"max-line-length": [
+		true,
+		250
+	],
+	"member-ordering": [
+		false,
+		{
+			"order": "fields-first"
+		}
+	],
+	"no-console": [
+		true
+	],
+	"no-switch-case-fall-through": true,
+	"strict-boolean-expressions": [
+		true,
+		"allow-boolean-or-undefined",
+		"allow-string",
+		"allow-null-union"
+	],
+	"switch-default": false,
+	"variable-name": [
+		true,
+		"ban-keywords",
+		"check-format",
+		"allow-pascal-case"
+	]
+}

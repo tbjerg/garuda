@@ -13,11 +13,11 @@
     "types": [],
 
     "alwaysStrict": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
+    // "strictNullChecks": true,
+    // "noImplicitAny": true,
+    // "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    // "noUnusedLocals": true,
     
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
