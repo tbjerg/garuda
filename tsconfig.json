@@ -10,11 +10,12 @@
       "dom.iterable",
       "scripthost"
     ],
-    "types": [],
+    "baseUrl": ".",
+    // "types": ["node_modules/@types/**/*.d.ts"],
 
     "alwaysStrict": true,
     // "strictNullChecks": true,
-    // "noImplicitAny": true,
+    "noImplicitAny": false,
     // "noImplicitReturns": true,
     "noImplicitThis": true,
     // "noUnusedLocals": true,
@@ -34,7 +35,7 @@
     "app/**/*.tsx",
     "test/**/*.ts",
     "test/**/*.tsx",
-    "node_modules/@types/**/*.d.ts"
+    "node_modules/@types/**/*.d.ts",
   ],
   "exclude": [
     "dist"
