@@ -6,8 +6,7 @@ const Sidebar: React.StatelessComponent<{ activeRoute: string | undefined }> = (
         <div className="hero is-dark">
             <nav className="navbar is-transparent">
                 <div className="navbar-item">
-                    <SidebarWrapper to="/" active={props.activeRoute}>Home</SidebarWrapper>
-                    <SidebarWrapper to="/codeMirror" active={props.activeRoute}>Code Mirror</SidebarWrapper>
+                    {/* <SidebarWrapper to="/" active={props.activeRoute}>Home</SidebarWrapper> */}
                 </div>
             </nav>
         </div >

@@ -7,7 +7,7 @@ interface IState {
 }
 
 interface IProps {
-    language?: string;
+    language: "javascript" | "typescript" | "html";
     style?: any;
     customStyle?: any;
     codeTagProps?: HTMLElement;
@@ -19,7 +19,7 @@ interface IProps {
 
 const SyntaxHighlighterContainer: React.StatelessComponent<IProps> = (props) => {
     return (
-        <SyntaxHighlighter {...props} showLineNumbers={true} language="javascript" style={hybrid}>
+        <SyntaxHighlighter {...props} showLineNumbers={true} language={props.language} style={hybrid}>
             {props.children}
         </SyntaxHighlighter>
     )
