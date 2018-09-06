@@ -1,11 +1,21 @@
 import * as React from "react"
-
+import { style } from "typestyle"
 interface ITabBinderState {
     activeTab: number
 }
 
 interface ITabBinderProps {
     initialActiveTab?: number
+}
+
+const colorStyle = (active: string) => {
+    if (active == "is-active")
+        return style({
+            backgroundColor: "rgba(17,138,120, 0.2)",
+            borderBottomColor: "#00d1b2 !important",
+            color: "#00d1b2 !important"
+        })
+    return style({ color: "white !important" })
 }
 
 export default class TabBinder extends React.Component<ITabBinderProps, ITabBinderState> {
@@ -16,7 +26,8 @@ export default class TabBinder extends React.Component<ITabBinderProps, ITabBind
         }
     }
 
-    private activeTabHandler = (index: number) => {
+    private activeTabHandler = (e, index: number) => {
+        e.preventDefault()
         this.setState((current) => ({ ...current, activeTab: index }))
     }
 
@@ -24,14 +35,16 @@ export default class TabBinder extends React.Component<ITabBinderProps, ITabBind
 
         const labels = (child, index) => {
             let activeClass = (this.state.activeTab === index ? 'is-active' : '');
+
             return (
-                <li key={index}>
-                    <a href="#"
-                        className={activeClass}
-                        onClick={() => this.activeTabHandler(index)}>
-                        {child.props.label}
-                    </a>
-                </li>
+                <div key={index}>
+                    <li className={activeClass}>
+                        <a href="#" className={colorStyle(activeClass)}
+                            onClick={(e) => this.activeTabHandler(e, index)}>
+                            {child.props.label}
+                        </a>
+                    </li>
+                </div>
             );
         }
         return (
@@ -71,57 +84,3 @@ export const Tab: React.StatelessComponent<ITabProps> = (props) => {
     )
 }
 
-
-// const Tabs = React.createClass({
-//     displayName: 'Tabs',
-//     getDefaultProps() {
-//         return {
-//             selected: 0
-//         };
-//     },
-//     getInitialState() {
-//         return {
-//             selected: this.props.selected
-//         };
-//     },
-//     handleClick(index, event) {
-//         event.preventDefault();
-//         this.setState({
-//             selected: index
-//         });
-//     },
-//     _renderTitles() {
-//         function labels(child, index) {
-//             let activeClass = (this.state.selected === index ? 'active' : '');
-//             return (
-//                 <li key={index}>
-//                     <a href="#"
-//                         className={activeClass}
-//                         onClick={this.handleClick.bind(this, index)}>
-//                         {child.props.label}
-//                     </a>
-//                 </li>
-//             );
-//         }
-//         return (
-//             <ul className="tabs__labels">
-//                 {this.props.children.map(labels.bind(this))}
-//             </ul>
-//         );
-//     },
-//     _renderContent() {
-//         return (
-//             <div className="tabs__content">
-//                 {this.props.children[this.state.selected]}
-//             </div>
-//         );
-//     },
-//     render() {
-//         return (
-//             <div className="tabs">
-//                 {this._renderTitles()}
-//                 {this._renderContent()}
-//             </div>
-//         );
-//     }
-// });

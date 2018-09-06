@@ -39,10 +39,13 @@ app.on('ready', () =>
   installExtensions()
     .then(() => {
       mainWindow = new BrowserWindow({
+        width: 800,
+        height: 750,
         show: false,
-        width: 950,
-        height: 825,
-        icon: __dirname + "./images/gargoyle.png"
+        icon: __dirname + "./images/gargoyle.png",
+        useContentSize: true,
+        backgroundColor: "#363636",
+        title: "Garuda"
       });
 
       mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -56,8 +59,10 @@ app.on('ready', () =>
         mainWindow = null;
       });
 
+
+
+      console.log(mainWindow.getSize())
       if (process.env.NODE_ENV === 'development') {
-        mainWindow.openDevTools();
         mainWindow.webContents.on('context-menu', (e, props) => {
           const { x, y } = props;
 

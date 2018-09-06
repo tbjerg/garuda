@@ -31,10 +31,10 @@ export default class SelectLanguageDropdown extends React.Component<ISelectLangu
     private setToActive = () => {
         this.setState((current) => ({ ...current, isActive: !current.isActive }))
     }
-    //NEED TO FIX
-    private onDropdownBlur = (e) => {
-        this.setState((current) => ({ ...current, isActive: false }))
-    }
+    // //NEED TO FIX
+    // private onDropdownBlur = (e) => {
+    //     this.setState((current) => ({ ...current, isActive: false }))
+    // }
     public render() {
         return (
             <div className={classes("dropdown", this.state.isActive ? "is-active" : "")}>
