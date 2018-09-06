@@ -44,8 +44,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReactTypescript",
-    "appId": "io.github.irath96.ElectronReactTypescript",
+    "productName": "garuda",
+    "appId": "io.github.trwhite12.garuda",
     "dmg": {
       "contents": [
         {
