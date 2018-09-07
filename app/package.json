@@ -1,13 +1,12 @@
 {
-  "name": "electron-react-typescript-boilerplate",
-  "productName": "electron-typescript-react-boilerplate",
-  "version": "1.0.0",
-  "description": "Electron application boilerplate based on TypeScript, React, React Router, Webpack, React Hot Loader for rapid application development",
+  "name": "garuda",
+  "productName": "garuda",
+  "version": "0.1",
+  "description": "VS code snippet creator",
   "main": "./main.js",
   "author": {
-    "name": "Alexander Rath",
-    "email": "irath96@gmail.com",
-    "url": "https://github.com/irath96"
+    "name": "Taylor White",
+    "url": "https://github.com/therudeone12"
   },
   "scripts": {
     "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
