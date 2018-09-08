@@ -2,11 +2,12 @@ import * as React from "react"
 import InputForm from "../component/inputForm"
 import SyntaxHighlight from "./syntaxHighlighter"
 import TabBinder, { Tab } from "../component/tabBinder"
-
+import FileViewer from "../component/fileViewer"
+// import SelectLanguageDropdown from "../component/selectLanguageDropdown"
 interface IState {
     codeSnippet: string
     codeSnippetActual: string
-    selectedLang: "javascript" | "typescript" | "html"
+    selectedLang: string
     copied: boolean
 }
 
@@ -27,6 +28,7 @@ export default class InputContainer extends React.Component<any, IState> {
             codeSnippet: JSON.stringify(formValues.codeInput).replace(/\\n/gm, "\",\n\""),
             codeSnippetActual: formValues.codeInput,
         }))
+        console.log(JSON.parse(formValues.codeInput))
     }
 
     private inputResetHandler = () => {
@@ -37,12 +39,18 @@ export default class InputContainer extends React.Component<any, IState> {
         this.setState((current) => ({ ...current, copied: true }))
     }
 
+    // private languageSelectHandler = (pair: IKeyValuePair) => {
+    //     this.setState((current) => ({ ...current, selectedLang: pair.value }))
+    //     console.log(pair)
+    // }
+
     public render() {
         return (
             <div>
                 &nbsp;
                 &nbsp;
-                    <InputForm
+                <FileViewer />
+                <InputForm
                     copied={this.state.copied}
                     onCopyText={this.copyTextHandler}
                     submitted={!!this.state.codeSnippet}
@@ -53,7 +61,7 @@ export default class InputContainer extends React.Component<any, IState> {
                 {this.state.codeSnippet &&
                     <TabBinder initialActiveTab={0}>
                         <Tab label="Result">
-                            <SyntaxHighlight language={this.state.selectedLang}>
+                            <SyntaxHighlight language={this.state.selectedLang} showLineNumbers={false}>
                                 {this.state.codeSnippet}
                             </SyntaxHighlight>
                         </Tab>
@@ -67,3 +75,9 @@ export default class InputContainer extends React.Component<any, IState> {
         )
     }
 }
+
+const LanguageOptions: IKeyValuePair[] = [
+    { key: 1, value: "javascript" },
+    { key: 2, value: "typescript" },
+    { key: 3, value: "html" },
+]

@@ -22,7 +22,7 @@ export default class SelectLanguageDropdown extends React.Component<ISelectLangu
     }
 
     private currentValChangeHandler = (value: IKeyValuePair) => {
-        this.setState((current) => ({ currentVal: value }), () => {
+        this.setState((current) => ({ ...current, currentVal: value }), () => {
             this.setToActive()
             this.props.onChange(value)
         })
@@ -31,10 +31,12 @@ export default class SelectLanguageDropdown extends React.Component<ISelectLangu
     private setToActive = () => {
         this.setState((current) => ({ ...current, isActive: !current.isActive }))
     }
+
     // //NEED TO FIX
-    // private onDropdownBlur = (e) => {
-    //     this.setState((current) => ({ ...current, isActive: false }))
-    // }
+    private onDropdownBlur = (e) => {
+        this.setState((current) => ({ ...current, isActive: false }))
+    }
+
     public render() {
         return (
             <div className={classes("dropdown", this.state.isActive ? "is-active" : "")}>
@@ -50,7 +52,7 @@ export default class SelectLanguageDropdown extends React.Component<ISelectLangu
                     <div className="dropdown-content">
                         {this.props.values.map((item, index) => {
                             return (
-                                <a key={index} href="#" onClick={() => this.currentValChangeHandler(item)} className={classes("dropdown-item hover", index == this.state.currentVal.key ? "is-active" : "")}>
+                                <a key={index} href="#" onClick={() => this.currentValChangeHandler(item)} className={classes("dropdown-item hover", index + 1 == this.state.currentVal.key ? "is-active" : "")}>
                                     {item.value}
                                 </a>
                             )

@@ -3,7 +3,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { hybrid } from 'react-syntax-highlighter/styles/hljs';
 import { style } from "typestyle"
 interface IProps {
-    language: "javascript" | "typescript" | "html";
+    language: string
+    // "javascript" | "typescript" | "html";
     style?: any;
     customStyle?: any;
     codeTagProps?: HTMLElement;
