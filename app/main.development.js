@@ -44,7 +44,7 @@ app.on('ready', () =>
         show: false,
         icon: __dirname + "./images/gargoyle.png",
         useContentSize: true,
-        backgroundColor: "#363636",
+        backgroundColor: "#01222b",
         title: "Garuda"
       });
 
