@@ -6,6 +6,8 @@ interface ITabBinderState {
 
 interface ITabBinderProps {
     initialActiveTab?: number
+    //returns the index of the active tab clicked
+    onTabClick?: (val?: any) => void
 }
 
 const colorStyle = (active: string) => {
@@ -18,7 +20,7 @@ const colorStyle = (active: string) => {
     return style({ color: "white !important" })
 }
 
-export default class TabBinder extends React.Component<ITabBinderProps, ITabBinderState> {
+export class TabBinder extends React.Component<ITabBinderProps, ITabBinderState> {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,6 +30,7 @@ export default class TabBinder extends React.Component<ITabBinderProps, ITabBind
 
     private activeTabHandler = (e, index: number) => {
         e.preventDefault()
+        this.props.onTabClick && this.props.onTabClick(index)
         this.setState((current) => ({ ...current, activeTab: index }))
     }
 

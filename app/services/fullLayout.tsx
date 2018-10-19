@@ -3,7 +3,7 @@ import { Route, RouteProps } from "react-router-dom"
 import { style } from "typestyle"
 interface IProps {
     component: any
-    sideBar: any
+    sideBar?: any
     isFullScreen?: boolean
     componentProps?: any
 }
@@ -15,7 +15,7 @@ const paddingLeftRightStyle = style({
 })
 
 const backgroundColorStyle = style({
-    backgroundColor: "#363636",
+    backgroundColor: "#01222b",
     $nest: {
         "& h2": {
             color: "whitesmoke"

@@ -28,6 +28,7 @@ export default class FileViewer extends React.Component<any, IFileViewerState> {
             Object.keys(jsonStr).forEach((key, i) => {
                 snippets.push({ name: key as string, pointsTo: jsonStr[key] })
             })
+            console.log(snippets)
             this.setState((current) => ({
                 ...current,
                 snippets: snippets,
@@ -40,23 +41,18 @@ export default class FileViewer extends React.Component<any, IFileViewerState> {
     public render() {
         return (
             <div>
-                <div className={"file" + this.state.fileName && " has-name"}>
-                    <label className="file-label">
-                        <input className="file-input" ref={this.inputFileRef} type="file" accept=".json" name="resume" onChange={this.fileViewUploadFileHandler} />
-                        <span className="file-cta">
-                            <span className="file-icon">
-                                <i className="fa fa-upload" />
-                            </span>
-                            <span className="file-label">
-                                Choose your snippet file
-                                </span>
-                        </span>
-                        {this.state.fileName &&
-                            <span className="file-name" style={{ color: "white" }}>
-                                {this.state.fileName}
-                            </span>}
-                    </label>
-                </div>
+                <label>
+                    <input className="file-input" ref={this.inputFileRef}
+                        type="file" accept=".json" name="resume" onChange={this.fileViewUploadFileHandler} />
+                    {!this.state.fileName &&
+                        <span className="file-label">
+                            import snippets
+                                </span>}
+                    {this.state.fileName &&
+                        <span style={{ color: "white" }}>
+                            {this.state.fileName}
+                        </span>}
+                </label>
             </div>
         )
     }

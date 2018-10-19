@@ -1,9 +1,13 @@
 import * as React from "react"
 import InputForm from "../component/inputForm"
 import SyntaxHighlight from "./syntaxHighlighter"
-import TabBinder, { Tab } from "../component/tabBinder"
-import FileViewer from "../component/fileViewer"
-// import SelectLanguageDropdown from "../component/selectLanguageDropdown"
+import { TabBinder, Tab } from "../component/tabBinder"
+import { mode } from "../types/modeSelection";
+
+interface IProps {
+    mode: mode
+}
+
 interface IState {
     codeSnippet: string
     codeSnippetActual: string
@@ -11,7 +15,10 @@ interface IState {
     copied: boolean
 }
 
-export default class InputContainer extends React.Component<any, IState> {
+type Props = IProps
+type State = IState
+
+export default class CodeToSippetContainer extends React.Component<Props, State> {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,12 +30,14 @@ export default class InputContainer extends React.Component<any, IState> {
     }
 
     private inputFormSubmit = (formValues: { codeInput: string }) => {
-        this.setState((current) => ({
-            ...current,
-            codeSnippet: JSON.stringify(formValues.codeInput).replace(/\\n/gm, "\",\n\""),
-            codeSnippetActual: formValues.codeInput,
-        }))
-        console.log(JSON.parse(formValues.codeInput))
+        console.log(this.props.mode)
+        if (this.props.mode == mode.codeToSnip)
+            this.setState((current) => ({
+                ...current,
+                codeSnippet: JSON.stringify(formValues.codeInput).replace(/\\n/gm, "\",\n\""),
+                codeSnippetActual: formValues.codeInput,
+            }), () => console.log(this.state.codeSnippet))
+
     }
 
     private inputResetHandler = () => {
@@ -39,17 +48,11 @@ export default class InputContainer extends React.Component<any, IState> {
         this.setState((current) => ({ ...current, copied: true }))
     }
 
-    // private languageSelectHandler = (pair: IKeyValuePair) => {
-    //     this.setState((current) => ({ ...current, selectedLang: pair.value }))
-    //     console.log(pair)
-    // }
-
     public render() {
         return (
             <div>
                 &nbsp;
                 &nbsp;
-                <FileViewer />
                 <InputForm
                     copied={this.state.copied}
                     onCopyText={this.copyTextHandler}

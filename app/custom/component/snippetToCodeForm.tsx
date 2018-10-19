@@ -23,7 +23,7 @@ interface IState {
 
 type Props = ISelectedFormProps & InjectedFormProps
 
-class CodeInputForm extends React.Component<Props, IState>{
+class SnippetToCodeForm extends React.Component<Props, IState>{
     constructor(props) {
         super(props)
         this.state = {
@@ -64,15 +64,15 @@ class CodeInputForm extends React.Component<Props, IState>{
     }
 }
 
+
+const formName = "snippetToCodeForm"
 let ReduxCodeInputForm = reduxForm<ISelectedFormProps, any>({
-    form: 'codeInputForm' // a unique identifier for this form
-})(CodeInputForm)
-const selector = formValueSelector('codeInputForm')
+    form: formName // a unique identifier for this form
+})(SnippetToCodeForm)
+const selector = formValueSelector(formName)
 ReduxCodeInputForm = connect((state) => {
-    const codeInput = selector(state, "codeInput")
     return {
-        codeInput
+        codeInput: selector(state, "codeInput")
     }
 })(ReduxCodeInputForm) as any
-
 export default ReduxCodeInputForm
