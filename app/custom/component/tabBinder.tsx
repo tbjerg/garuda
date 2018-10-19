@@ -6,7 +6,6 @@ interface ITabBinderState {
 
 interface ITabBinderProps {
     initialActiveTab?: number
-    //returns the index of the active tab clicked
     onTabClick?: (val?: any) => void
 }
 
@@ -35,7 +34,6 @@ export class TabBinder extends React.Component<ITabBinderProps, ITabBinderState>
     }
 
     private renderLabels = () => {
-
         const labels = (child, index) => {
             let activeClass = (this.state.activeTab === index ? 'is-active' : '');
 
