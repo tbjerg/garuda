@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
-
+//remove these components
 let styles = require('./Counter.scss');
 
 export interface IProps extends RouteComponentProps<any> {
