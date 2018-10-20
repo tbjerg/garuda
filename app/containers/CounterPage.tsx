@@ -4,7 +4,7 @@ import { connect, Dispatch } from 'react-redux';
 import { Counter, IProps } from '../components/Counter';
 import * as CounterActions from '../actions/counter';
 import { IState } from '../reducers';
-
+//add for remove - clean stock components
 function mapStateToProps(state: IState): Partial<IProps> {
   return {
     counter: state.counter
