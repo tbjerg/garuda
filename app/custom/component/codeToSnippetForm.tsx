@@ -4,7 +4,7 @@ import { Field, reduxForm, InjectedFormProps, formValueSelector } from "redux-fo
 import { connect } from "react-redux"
 import * as CopyToClipboard from "react-copy-to-clipboard"
 import { style, classes } from "typestyle"
-
+//test
 interface ISelectedFormProps {
     submitted: boolean
     onResetForm?: () => void
